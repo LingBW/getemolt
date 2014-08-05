@@ -66,7 +66,7 @@ gbox=[-69.0,-73.0,41.0,40.82] #  maxlon, minlon,maxlat,minlat
 depth=[80,0]  #bottom depth,    surface depth
 site=['SO07','ST02']   # if you do not want to input site, write: site=''
 f = open(str(gbox[3])+'.dat', 'w')  # create file and name it
-f.writelines('site'+'         '+'lat         '+' lon        '+' depth(F)'+'    '+'      time'+'              '+'temp(F)'+'\n')
+f.writelines('site'+'         '+'lat         '+' lon        '+' depth(m)'+'    '+'      time'+'              '+'temp(C)'+'\n')
 if site=='':
     time,sea_water_temperature,depth2,sites,lat,lon=getobs_tempsalt_byrange(gbox,depth,input_time)
     for k in range(len(sites)):
