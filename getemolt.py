@@ -2,12 +2,18 @@
 """
 ######################
 Notes
-it uses for getting emolt data based on different conditions()
-After running this program, you can get emolt data into a file
-The saving file will be in same floder as this program
+it used for getting emolt data based on different conditions()
+After running this program, you can get  a file of emolt data
+The saving file will be in same folder as this program
+input values: time period,gbox(maxlon, minlon,maxlat,minlat),depth(deep,low),sites
+function uses:getobs_tempsalt_bysite,getobs_tempsalt_byrange
+output : a data file which includes sites, time, lat,lon,temp,depth
 
 @author: huanxin
 """
+
+######################################
+#
 import datetime as dt
 import sys
 import os
