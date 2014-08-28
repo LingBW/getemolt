@@ -169,6 +169,9 @@ def getemolt_ctl(inputfilename):
        mindtime=dt.datetime.strptime(dtime[0],'%Y,%m,%d,%H,%M')
        maxdtime=dt.datetime.strptime(dtime[1],'%Y,%m,%d,%H,%M') 
    else:
+
+       mindtime=dt.datetime(1960, 8, 25, 0, 1)
+       maxdtime=dt.datetime(2019, 8, 25, 0, 1)
        dtime=f.readline()
    input_time=[mindtime,maxdtime]
        
@@ -203,6 +206,8 @@ def getemolt_ctl(inputfilename):
        polygon=[eval(i) for i in polygon]
    else:
        polygon==''
+       polygon=f.readline()
+       
        
    if select5 =='1':
        site=f.readline()
@@ -210,6 +215,7 @@ def getemolt_ctl(inputfilename):
    else:
        site=f.readline()
        site=''
+       
        
    return input_time,depth,gbox,polygon,site
 
