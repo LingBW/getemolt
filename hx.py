@@ -110,7 +110,7 @@ def getemolt_sensor(mindtime1,maxdtime1,i_mindepth,i_maxdepth,site2,mindtime,max
 	        depth.append(depth1[m])
 	  #print len(temp1)     
 	  return time1,yrday01,temp1,sites1,depth,
-def getobs_tempsalt_bysite(site,input_time):
+def getobs_tempsalt_bysite(site,input_time,depth):
     """
 Function written by Jim Manning and used in "modvsobs" and "getemolt",it was modified by Huanxin
 get data from url, return depth temperature,latitude,longitude, and start and end times
@@ -120,9 +120,10 @@ example: input_time=[dt(2003,1,1,0,0,0,0,pytz.UTC),dt(2009,1,1,0,0,0,0,pytz.UTC)
 """
     mintime=input_time[0].strftime('%Y-%m-%d'+'T'+'%H:%M:%S'+'Z')  # change time format
     maxtime=input_time[1].strftime('%Y-%m-%d'+'T'+'%H:%M:%S'+'Z')    
-   
+    i_maxdepth=depth[0];i_mindepth=depth[1];
     url='http://comet.nefsc.noaa.gov:8080/erddap/tabledap/eMOLT.csv?SITE,time,depth,sea_water_temperature,latitude,longitude&time>='\
-    +str(mintime)+'&time<='+str(maxtime)+'&SITE="'+str(site)+'"&orderBy("depth,time")'
+    +str(mintime)+'&time<='+str(maxtime)+'&depth<='+str(i_maxdepth)+'&depth>='+str(i_mindepth)+'&SITE="'+str(site)+'"&orderBy("depth,time")'
+    
     df=pd.read_csv(url,skiprows=[1])
     for k in range(len(df)):
        df.time[k]=parse(df.time[k])

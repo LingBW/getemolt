@@ -45,7 +45,7 @@ if site=='':
                continue
 else:
     for q in range(len(site)):
-        time,sea_water_temperature,depth2,sites,lat,lon=getobs_tempsalt_bysite(site[q],input_time) #get data
+        time,sea_water_temperature,depth2,sites,lat,lon=getobs_tempsalt_bysite(site[q],input_time,depth) #get data
         for k in range(len(sites)): 
            f.writelines(str(sites[k])+'    '+'%10.2f' % lat[k]+'   '+'%10.2f' % lon[k]+'   '+'%10.2f' % depth2[k]+'      '\
            +str(time[k].strftime('%Y-%m-%d %H:%M:%S'))+'       '+str(sea_water_temperature[k])+'\n')
