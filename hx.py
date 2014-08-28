@@ -112,8 +112,9 @@ def getemolt_sensor(mindtime1,maxdtime1,i_mindepth,i_maxdepth,site2,mindtime,max
 	  return time1,yrday01,temp1,sites1,depth,
 def getobs_tempsalt_bysite(site,input_time,depth):
     """
-Function written by Jim Manning and used in "modvsobs" and "getemolt",it was modified by Huanxin
-get data from url, return depth temperature,latitude,longitude, and start and end times
+Function written by Jim Manning and used in "modvsobs" and "getemolt",it was modified by Huanxin.
+get data from url, return depth temperature,latitude,longitude, and start and end times.
+depth includes bottom depth and surface depth,like:  [80,0].
 input_time can either contain two values: start_time & end_time OR one value:interval_days
 and they should be timezone aware
 example: input_time=[dt(2003,1,1,0,0,0,0,pytz.UTC),dt(2009,1,1,0,0,0,0,pytz.UTC)]
@@ -132,10 +133,10 @@ example: input_time=[dt(2003,1,1,0,0,0,0,pytz.UTC),dt(2009,1,1,0,0,0,0,pytz.UTC)
 
 def getobs_tempsalt_byrange(gbox,depth,input_time):
     """
-Function written by Huanxin and used in "getemolt"
-get data from url, return depth temperature,latitude,longitude, and start and end times
-gbox includes 4 values, maxlon, minlon,maxlat,minlat, like:  [-69.0,-73.0,41.0,40.82]
-depth includes bottom depth and surface depth,like:  [80,0]
+Function written by Huanxin and used in "getemolt".
+get data from url, return depth temperature,latitude,longitude, and start and end times.
+gbox includes 4 values, maxlon, minlon,maxlat,minlat, like:  [-69.0,-73.0,41.0,40.82].
+depth includes bottom depth and surface depth,like:  [80,0].
 input_time can either contain two values: start_time & end_time OR one value:interval_days
 and they should be timezone aware
 example: input_time=[dt(2003,1,1,0,0,0,0,pytz.UTC),dt(2009,1,1,0,0,0,0,pytz.UTC)]
