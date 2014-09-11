@@ -2,8 +2,8 @@
 """
 ######################
 Notes
-it used for getting north of Georges Bank and Gulf of Maine emolt data based on different conditions()
-After running this program, you can get  a file of emolt data
+it used for getting north of Georges Bank and Gulf of Maine eMOLT data based on different conditions()
+After running this program, you can get  a file of eMOLT data
 The saving file will be in same folder as this program
 input values: time period,gbox(maxlon, minlon,maxlat,minlat),depth(deep,low),sites,polygon sites
 function uses:getobs_tempsalt_bysite,getobs_tempsalt_byrange,getemolt_ctl,point_in_poly
