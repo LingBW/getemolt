@@ -51,65 +51,7 @@ def colors(n):
 	  return rgbcolors
 
 
-def getemolt_depth(b_mindepth,b_maxdepth,lat_max,lon_max,lat_min,lon_min,site1):
-    #According to the conditions to select data from "emolt_sensor"
-    url="http://gisweb.wh.whoi.edu:8080/dods/whoi/emolt_site?emolt_site.SITE,emolt_site.BTM_DEPTH,emolt_site.LAT_DDMM,emolt_site.LON_DDMM&emolt_site.BTM_DEPTH<="+str(b_maxdepth)+"&emolt_site.BTM_DEPTH>="+str(b_mindepth)+"&emolt_site.LON_DDMM<="\
-    +str(lon_max)+"&emolt_site.LON_DDMM>="+str(lon_min)+"&emolt_site.LAT_DDMM<="+str(lat_max)+"&emolt_site.LAT_DDMM>="+str(lat_min)+site1
-    try:   
-	           dataset=open_url(url)
-    except:
-	           print 'Sorry, '+url+' not available' 
-	           sys.exit(0)
-    emolt_site=dataset['emolt_site']
-    try:   
-	          sites=list(emolt_site['SITE'])
-    except:
-	          print "'Sorry, According to your input, here are no value. please check it! ' "
-	          sys.exit(0)   
-    sites=list(emolt_site['SITE'])
-    depth_b=list(emolt_site['BTM_DEPTH'])
-    
 
-            
-    lat_dd=list(emolt_site['LAT_DDMM'])
-    lon_dd=list(emolt_site['LON_DDMM'])
-    return sites,depth_b,lat_dd,lon_dd
-	
-def getemolt_sensor(mindtime1,maxdtime1,i_mindepth,i_maxdepth,site2,mindtime,maxdtime):
-	  #According to the conditions to select data from "emolt_sensor"
-	 
-	  url2="http://gisweb.wh.whoi.edu:8080/dods/whoi/emolt_sensor?emolt_sensor.SITE,emolt_sensor.TIME_LOCAL,emolt_sensor.YRDAY0_LOCAL,emolt_sensor.TEMP,emolt_sensor.DEPTH_I&emolt_sensor.TIME_LOCAL>="+str(mindtime1)+"&emolt_sensor.TIME_LOCAL<="\
-        +str(maxdtime1)+"&emolt_sensor.DEPTH_I>="+str(i_mindepth)+"&emolt_sensor.DEPTH_I<="+str(i_maxdepth)+site2
-	  try:   
-	           dataset1=open_url(url2)
-	  except:
-	           print 'Sorry, '+url2+' not available' 
-	           sys.exit(0)
-	  emolt_sensor=dataset1['emolt_sensor']
-	  try:   
-	          sites2=list(emolt_sensor['SITE'])
-	  except:
-	          print "'Sorry, According to your input, here are no value. please check it! ' "
-	          sys.exit(0) 
-	  #sites2=list(emolt_sensor['SITE'])
-	  time=list(emolt_sensor['TIME_LOCAL'])
-	  yrday0=list(emolt_sensor['YRDAY0_LOCAL'])
-	  temp=list(emolt_sensor['TEMP'])
-	  depth1=list(emolt_sensor['DEPTH_I'])
-	
-	
-	  time1,temp1,yrday01,sites1,depth=[],[],[],[],[]
-	  for m in range(len(time)):
-	      #if mindtime<=dt.datetime.strptime(str(time[m]),'%Y-%m-%d')<=maxdtime:
-	      if date2num(mindtime)<=yrday0[m]%1+date2num(dt.datetime.strptime(str(time[m]),'%Y-%m-%d'))<=date2num(maxdtime):
-	      #if str(time[m])=='2012-01-01':
-	        temp1.append(temp[m])
-	        yrday01.append(yrday0[m]%1+date2num(dt.datetime.strptime(str(time[m]),'%Y-%m-%d')))
-	        sites1.append(sites2[m])
-	        time1.append(date2num(dt.datetime.strptime(str(time[m]),'%Y-%m-%d'))) 
-	        depth.append(depth1[m])
-	  #print len(temp1)     
-	  return time1,yrday01,temp1,sites1,depth,
 def getobs_tempsalt_bysite(site,input_time,depth):
     """
 Function written by Jim Manning and used in "modvsobs" and "getemolt",it was modified by Huanxin.
@@ -254,36 +196,6 @@ def emolt_plotting(yrday,depth,temp,time11,samesites0,ax,k,ave_temp0,rgbcolors):
     plt.xlim([min(time11),max(time11)+(max(time11)-min(time11))/2]) 
     plt.savefig('/net/home3/ocn/jmanning/py/huanxin/work/hx/please rename .png')   
     plt.show()
-def getemolt_samesites_data(sites1,sites2,temp1,lat_dd,lon_dd):
-    samesites=list(set(sites2).intersection(set(sites1)))
-    if samesites==[]:
-      print "Can not find eligible data, please re-enter the conditions"
-      sys.exit(0)
-    #get average Temperature, sorted sites by average Temperature
-    ave_temp,samesites0,ave_temp0=[],[],[]
-    for r in range(len(samesites)):
-      temp_a=[]
-      for s in range(len(sites1)):
-         if sites1[s]==samesites[r]:
-            temp_a.append(temp1[s]) 
-      temp_ave=np.mean(temp_a)
-      ave_temp.append(temp_ave)
-    c=zip(samesites,ave_temp)
-    d=sorted(c, key=lambda c: c[1])
-    for g in range(len(samesites)):
-      samesites0.append(d[g][0])
-      ave_temp0.append(d[g][1])
-    lat,lon=[],[]
-    for y in range(len(samesites0)):
-      for z in range(len(sites2)):
-          if sites2[z]==samesites0[y]:
-              lat.append(lat_dd[z])
-              lon.append(lon_dd[z])  
-    samesites=samesites0
-    ave_temp=ave_temp0
-    return samesites,ave_temp,lat,lon
-    
-
 
 def nearxy(x,y,x0,y0):
     distance=[]
