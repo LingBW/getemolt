@@ -1,15 +1,15 @@
-[0 1 1 1 1]
-[2000,8,25,0,1;2014,9,27,0,0]
-[85,120]
-[46.42,-71.16,41.62,-66.48] #
-[(-70.14,42.03);(-70.14,42.05);(-70.12,42.05);(-70.12,42.03);(-69.67,42.46)]
-[BA02]   # like  DJ01,PF01
+[0 1 1 1 1]                      represent index of the following 5 line,'1' means picking,'0' means not.
+[2000,8,25,0,1;2014,9,27,0,0]    represent the period of date
+[85,120]                         represent the range depth of sensor (meters)
+[46.42,-71.16,41.62,-66.48] #    represent the range lat,lon of range:maxlat,maxlon,minlat,minlon
+[(-70.14,42.03);(-70.14,42.05);(-70.12,42.05);(-70.12,42.03);(-69.67,42.46)]  # you can select sites by a special polygon
+[BA02]   # like  DJ01,PF01       the 6th line represent the sites you need, use "," to split
 
 
-The first line represent index of the following 5 line,'1' means picking,'0' means not.
-the 2nd line represent the period of date
-the 3rd line represent the range depth of sensor (meters)
-the 4th line represent the range lat,lon of range:maxlat,maxlon,minlat,minlon
-the 5th line is working for polygon, you can select sites by a special range
-the 6th line represent the sites you need, use "," to split
+
+
+
+
+
+
 
