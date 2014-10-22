@@ -17,3 +17,5 @@ input values: time period,gbox(maxlon, minlon,maxlat,minlat),depth(deep,low),sit
 function uses:getobs_tempsalt_bysite,getobs_tempsalt_byrange,getemolt_ctl,point_in_poly
 
 output : a data file which includes sites, time, lat,lon,temp,depth
+
+flowchart: 'getemolt_flowchat.png'
