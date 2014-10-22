@@ -1,10 +1,10 @@
 getemolt
 ========
 
-gets eEMOLT data , organize and save it in a file
+gets eEMOLT data , organizes and saves it in a file
 
 
-gets north of Georges Bank and Gulf of Maine eMOLT data based on different conditions()
+gets  eMOLT data based on different conditions()
 
 before you run it, please modify control file "getemolt_ctl.txt" first.
 

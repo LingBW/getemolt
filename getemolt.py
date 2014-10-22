@@ -20,7 +20,7 @@ import os
 ops=os.defpath
 pydir='../'
 sys.path.append(pydir)
-from hx import getemolt_ctl,point_in_poly,getobs_tempsalt_bysite,getobs_tempsalt_byrange
+from getemolt_functions import getemolt_ctl,point_in_poly,getobs_tempsalt_bysite,getobs_tempsalt_byrange
 
 
 inputfilename='./getemolt_ctl.txt' # control file path
