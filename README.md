@@ -10,7 +10,7 @@ before you run it, please modify control file "getemolt_ctl.txt" first.
 
 After running this program, you can get a file of eMOLT data
 
-The  file will be saved in same folder as this program named by the smallest lat you input
+The  file will be saved in same folder as this program named by the smallest latitude you input
 
 input values: time period,gbox(maxlon, minlon,maxlat,minlat),depth(deep,low),sites,polygon sites
 
