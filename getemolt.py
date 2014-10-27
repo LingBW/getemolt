@@ -26,7 +26,7 @@ from getemolt_functions import getemolt_ctl,point_in_poly,getobs_tempsalt_bysite
 inputfilename='./getemolt_ctl.txt' # control file path
 input_time,depth,gbox,polygon,site=getemolt_ctl(inputfilename)  # get input values from control file
 
-f = open(str(gbox[3])+'.dat', 'w')  # create file and name it
+f = open('./emolt'+dt.datetime.now().strftime('%Y-%m-%d %H:%M') + '.txt', 'w')  # create file and name it
 f.writelines('site'+'         '+'lat         '+' lon        '+' depth(m)'+'    '+'      time'+'              '+'temp(C)'+'\n')
 #write title
 if site=='':
