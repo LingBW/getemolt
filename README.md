@@ -18,4 +18,7 @@ function uses:getobs_tempsalt_bysite,getobs_tempsalt_byrange,getemolt_ctl,point_
 
 output : a data file which includes sites, time, lat,lon,temp,depth
 
-flowchart: 'getemolt_flowchat.png'
+flowchart: 
+
+
+<a href="https://github.com/xhx509/getemolt/blob/master/getemolt_flowchart.png">getemolt.py</a>
