@@ -4,7 +4,7 @@
 Notes
 it used for getting north of Georges Bank and Gulf of Maine eMOLT data based on different conditions()
 After running this program, you can get  a file of eMOLT data
-The  file will be saved in same folder as this program named by the smallest latitude you input
+The  file will be saved in same folder as this program named by the time of the file created
 input values: time period,gbox(maxlon, minlon,maxlat,minlat),depth(deep,low),sites,polygon sites
 function uses:getobs_tempsalt_bysite,getobs_tempsalt_byrange,getemolt_ctl,point_in_poly
 output : a data file which includes sites, time, lat,lon,temp,depth
@@ -16,7 +16,7 @@ output : a data file which includes sites, time, lat,lon,temp,depth
 
 import sys
 import os
-
+import datetime as dt
 ops=os.defpath
 pydir='../'
 sys.path.append(pydir)
@@ -26,7 +26,7 @@ from getemolt_functions import getemolt_ctl,point_in_poly,getobs_tempsalt_bysite
 inputfilename='./getemolt_ctl.txt' # control file path
 input_time,depth,gbox,polygon,site=getemolt_ctl(inputfilename)  # get input values from control file
 
-f = open(str(gbox[3])+'.dat', 'w')  # create file and name it
+f = open('emolt'+dt.datetime.now().strftime('%Y-%m-%d %H:%M')+'.dat', 'w')  # create file and name it
 f.writelines('site'+'         '+'lat         '+' lon        '+' depth(m)'+'    '+'      time'+'              '+'temp(C)'+'\n')
 #write title
 if site=='':
